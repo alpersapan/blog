@@ -1,0 +1,24 @@
+@model blog.Models.BlogCategoryUser
+
+@{
+    ViewData["Title"]= Model.BlogTitle;
+}
+
+<div class="card bg-dark text-white">
+    <div class="card-header">
+        <h4 class="text-white">@Model.BlogTitle </h4>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">
+        <span class="fa fa-user"></span>&nbsp;@Model.UserName &emsp;
+        <span class="fa fa-calendar"></span>&nbsp;@Model.BlogDate &emsp;
+        <span class="fa fa-tag"></span>&nbsp;@Model.CategoryName &emsp;
+        </h6>
+        <p>
+            @Model.BlogContent
+        </p>
+    </div>
+</div>
+<div>
+    <a asp-action="index" asp-controller="home">Anasayfaya dön</a>
+</div>

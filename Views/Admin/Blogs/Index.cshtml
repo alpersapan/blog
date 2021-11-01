@@ -1,0 +1,37 @@
+@model IEnumerable<blog.Models.BlogCategoryUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";
+}
+
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="blogCreate" asp-controller="admin">Yeni</a>
+</div>
+
+<div class="row">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h4 class="text-white"><a class="text-white" asp-action="blogDetails" asp-controller="admin" asp-route-id="@item.BlogId">@item.BlogTitle</a></h4>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <span class="fa fa-user"></span>&nbsp;@item.UserName &emsp;
+                        <span class="fa fa-calendar"></span>&nbsp;@item.BlogDate &emsp;
+                        <span class="fa fa-tag"></span>&nbsp;@item.CategoryName &emsp;
+                    </h6>
+                    <p>
+                        @item.BlogContent
+                    </p>
+                    <a class="btn btn-sm btn-light" asp-action="blogDetails" asp-controller="admin" asp-route-id="@item.BlogId">İncele</a>
+                    <a class="btn btn-sm btn-primary" asp-action="blogEdit" asp-controller="admin" asp-route-id="@item.BlogId">Düzenle</a>
+                    <a class="btn btn-sm btn-danger" asp-action="blogDelete" asp-controller="admin" asp-route-id="@item.BlogId">Sil</a>
+                </div>
+            </div>
+            <hr>
+        }
+    </div>
+</div>

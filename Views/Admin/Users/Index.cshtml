@@ -1,0 +1,39 @@
+@model IEnumerable<blog.Models.User>
+
+@{
+    ViewData["Title"] = "UserIndex";
+    Layout = "_AdminLayout";
+}
+
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="userCreate" asp-controller="admin">Yeni</a>
+</div>
+
+<div class="row">
+    <div class="container">
+        <table class="table table-dark table-bordered table-hover">
+            <thead>
+                <th>Kullanıcı ID</th>
+                <th>Adı Soyadı</th>
+                <th>Mail</th>
+                <th>Şifre</th>
+                <th>İşlemler</th>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.UserId</td>
+                        <td>@user.UserName</td>
+                        <td>@user.UserMail</td>
+                        <td>@user.UserPw</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="userEdit" asp-controller="admin" asp-route-id="@user.UserId">Düzenle</a> 
+                            <a class="btn btn-danger" asp-action="userDelete" asp-controller="admin" asp-route-id="@user.UserId">Sil</a>
+                        </td>
+                    </tr>
+                 }
+            </tbody>
+        </table>
+    </div>
+</div>

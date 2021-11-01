@@ -1,0 +1,42 @@
+@model blog.Models.Blog
+
+@{
+    ViewData["Title"] =  Model.BlogTitle + " Düzenleme";
+    Layout = "_AdminLayout";
+}
+
+<div>
+    <form asp-action="blogEdit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="BlogId" />
+    <div class="form-group">
+        <label>Kullanıcı</label>
+        <select asp-for="UserId" asp-items="@ViewBag.kullanicilar" class="form-control bg-dark text-white"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Kategori</label>
+        <select asp-for="CategoryId" asp-items="@ViewBag.kategoriler" class="form-control bg-dark text-white"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Başlık</label>
+        <input asp-for="BlogTitle" class="form-control bg-dark text-white" />
+        <span asp-validation-for="BlogTitle" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>İçerik</label>
+        <textarea asp-for="BlogContent" class="form-control bg-dark text-white" rows="10"></textarea>
+        <span asp-validation-for="BlogContent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Tarih</label>
+        <input asp-for="BlogDate" class="form-control bg-dark text-white" />
+        <span asp-validation-for="BlogDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Kaydet" class="btn btn-primary" />
+        <a class="btn btn-info" asp-action="blogs" asp-controller="admin" >İçerik Listesi</a>
+    </div>
+</form>
+</div>

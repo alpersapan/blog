@@ -1,0 +1,30 @@
+@model IEnumerable<blog.Models.BlogCategoryUser>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="row">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h4 class="text-white"><a class="text-white" asp-action="Details" asp-route-id="@item.BlogId">@item.BlogTitle</a></h4>
+                    
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <span class="fa fa-user"></span>&nbsp;@item.UserName &emsp;
+                        <span class="fa fa-calendar"></span>&nbsp;@item.BlogDate &emsp;
+                        <span class="fa fa-tag"></span>&nbsp;@item.CategoryName &emsp;
+                    </h6>
+                    <p>
+                        @item.BlogContent.Substring(0,50)<a class="text-primary" asp-action="details" asp-controller="home" asp-route-id="@item.BlogId">...devamını oku...</a>
+                    </p>
+                </div>
+            </div>
+            <hr>
+        }
+    </div>
+</div>

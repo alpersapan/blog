@@ -1,0 +1,35 @@
+@model IEnumerable<blog.Models.Category>
+
+@{
+    ViewData["Title"] = "CategoryIndex";
+    Layout = "_AdminLayout";
+}
+
+<div class="mb-3">
+    <a class="btn btn-success" asp-action="categoryCreate" asp-controller="admin">Yeni</a>
+</div>
+
+<div class="row">
+    <div class="container">
+        <table class="table table-dark table-bordered table-hover">
+            <thead>
+                <th>Kategori ID</th>
+                <th>Kategori Adı</th>
+                <th>İşlemler</th>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+                        <td>@category.CategoryId</td>
+                        <td>@category.CategoryName</td>
+                        <td>
+                        <a class="btn btn-primary" asp-action="categoryEdit" asp-controller="admin" asp-route-id="@category.CategoryId">Düzenle</a> 
+                        <a class="btn btn-danger" asp-action="categoryDelete" asp-controller="admin" asp-route-id="@category.CategoryId">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

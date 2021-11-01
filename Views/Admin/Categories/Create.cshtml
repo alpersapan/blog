@@ -1,0 +1,26 @@
+@model blog.Models.Category
+
+@{
+    ViewData["Title"] = "Yeni Kategori Oluşturma";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-white">Yeni Kategori Ekleme</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CategoryCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Kategori Adı</label>
+                <input asp-for="CategoryName" class="form-control bg-dark text-white" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="categories" asp-controller="admin">Kategori Listesi</a>
+            </div>
+        </form>
+    </div>
+</div>

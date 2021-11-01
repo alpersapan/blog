@@ -1,0 +1,36 @@
+@model blog.Models.User
+
+@{
+    ViewData["Title"] = "Yeni Kullanıcı Ekleme";
+    Layout = "_AdminLayout";
+}
+
+<h1 class="text-white">Yeni Kullanıcı Ekleme</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="UserCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input asp-for="UserName" class="form-control bg-dark text-white" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>E-Posta</label>
+                <input asp-for="UserMail" class="form-control bg-dark text-white" />
+                <span asp-validation-for="UserMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Kullanıcı Şifre</label>
+                <input asp-for="UserPw" class="form-control bg-dark text-white" />
+                <span asp-validation-for="UserPw" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ekle" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="users" asp-controller="admin">Kullanıcı Listesi</a>
+            </div>
+        </form>
+    </div>
+</div>
